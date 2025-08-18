@@ -1,8 +1,13 @@
 import os
 import boto3
 
+import tkinter as tk
+from tkinter import filedialog
+
 MAX_FILE_SIZE_MB = 100
 MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
+
+BUCKET_NAME = 'datauploadtool'
 
 def upload_file_to_s3(file_path, bucket_name):
     if not os.path.exists(file_path):
@@ -25,9 +30,13 @@ def upload_file_to_s3(file_path, bucket_name):
         print(f"Fehler beim Upload: {e}")
         return False
 
-BUCKET_NAME = 'datauploadtool'
-
 if __name__ == "__main__":
-    local_file_path = r"C:\Users\kurta\Downloads\Screenshot 2025-08-18 150812.png"
+    root = tk.Tk()
+    root.withdraw()
 
-    upload_file_to_s3(local_file_path, BUCKET_NAME)
+    local_file_path = filedialog.askopenfilename()
+
+    if local_file_path:
+        upload_file_to_s3(local_file_path, BUCKET_NAME)
+    else:
+        print("Keine Datei ausgewählt. Programm beendet.")
