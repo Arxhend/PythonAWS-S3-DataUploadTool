@@ -1,0 +1,1 @@
+This project serves as my first practical experience combining Python and Amazon Web Services (AWS). It's a simple tool built with Python that demonstrates how to upload files to an AWS S3 (Simple Storage Service) bucket. This foundational project helps me understand core cloud storage concepts and basic AWS integration.
